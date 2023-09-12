@@ -66,7 +66,7 @@ function Projects() {
 
   // console.log(albums);
   return (
-    <div className="body">
+    <div>
       <Container>
         <InputGroup className='mb-3' size="lg">
           <FormControl

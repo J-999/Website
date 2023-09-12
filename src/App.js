@@ -1,31 +1,48 @@
 import React, { useState, createContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import Toggle from "react-toggle";
 import ReactSwitch from "react-switch";
 import Navbar from './components/Navigation';
 import Home from './components/Home';
 import Projects from './components/Projects';
 import Info from './components/Info';
+import DarkMode from './components/DarkMode';
 import './App.css';
 
 export const ThemeContext = createContext(null);
 
 function App() {
 
-  // const [theme, setTheme] = useState("dark");
+  // const [isDark, setIsDark] = useState(true);
 
-  // // toggle between dark and light mode
-  // const toggleTheme = () => {
-  //   setTheme((curr) => (curr === "light" ? "dark" : "light"));
-  // };
 
   return (
     <div className='App'>
-      {/* <ThemeContext.Provider value={{ theme, toggleTheme }}> */}
-      {/* <div className="body" id={theme}> */}
-      <div className="body">
-        {/* <div className="settings">
-            <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
-        </div> */}
+
+    {/* <Toggle
+      checked={isDark}
+      onChange={({ target }) => setIsDark(target.checked)}
+      icons={{ checked: "🌙", unchecked: "🔆" }}
+      aria-label="Dark mode toggle"
+    /> */}
+      <DarkMode />
+      <div className='name-text'>
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/info" element={<Info />} />
+            </Routes>
+          </Router>
+        </div>
+      hello there
+
+      {/* <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className="body" id={theme}>
+        <div className="settings">
+          <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+        </div>
         <div className='name-text'>
           <Router>
             <Navbar />
@@ -37,9 +54,8 @@ function App() {
           </Router>
         </div>
       </div>
-      {/* </ThemeContext.Provider> */}
+      </ThemeContext.Provider> */}
     </div>
-    
   );
 }
 
